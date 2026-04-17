@@ -3,262 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillBridge Africa - Interactive Dashboard Preview</title>
+    <title>SkillBridge Africa – AI‑Powered Talent Matching</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .hidden { display: none; }
         .transition { transition: all 0.3s ease; }
         .hover\:scale-105:hover { transform: scale(1.05); }
-        .hover\:bg-blue-700:hover { background-color: #1d4ed8; }
-        .hover\:bg-gray-600:hover { background-color: #4b5563; }
-        .hover\:text-blue-400:hover { color: #60a5fa; }
         .cursor-pointer { cursor: pointer; }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+        .animate-pulse { animation: pulse 1.2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
     </style>
 </head>
 <body class="bg-white">
 
-<section class="py-20 bg-white">
-    <h2 class="text-3xl font-bold text-center mb-12">
-        Interactive Product Preview
-    </h2>
+    <!-- AI MATCHING SECTION -->
+    <section class="py-20 bg-gray-50 text-center">
+        <h2 class="text-3xl font-bold mb-6">AI-Powered Skill Matching</h2>
+        <p class="mb-10 text-gray-600">Watch how SkillBridge matches talent to opportunities instantly</p>
+        <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6">
+            <div class="grid md:grid-cols-3 gap-6 items-center">
+                <div class="text-left">
+                    <h4 class="font-semibold mb-2">👨‍🎓 Student</h4>
+                    <p class="text-sm">Skills:</p>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="bg-blue-100 px-2 py-1 rounded text-xs">HTML</span>
+                        <span class="bg-blue-100 px-2 py-1 rounded text-xs">Tailwind</span>
+                        <span class="bg-blue-100 px-2 py-1 rounded text-xs">UI Design</span>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div id="aiBox" class="bg-purple-600 text-white px-4 py-2 rounded-full animate-pulse">🤖 Matching...</div>
+                </div>
+                <div class="text-left">
+                    <h4 class="font-semibold mb-2">🏢 Internship</h4>
+                    <p class="text-sm">Frontend Developer</p>
+                    <p class="text-xs text-gray-500">Needs UI + Frontend skills</p>
+                </div>
+            </div>
+            <div id="matchResult" class="mt-6 hidden"><p class="text-green-600 font-semibold">✅ 92% Match Found — Perfect Fit!</p></div>
+        </div>
+    </section>
 
-    <div class="max-w-6xl mx-auto px-4">
-        <div id="dashboard" class="bg-gray-900 rounded-2xl shadow-2xl p-6 text-white transition-all duration-500">
+    <!-- ONBOARDING FLOW -->
+    <section class="py-20 bg-white text-center">
+        <h2 class="text-3xl font-bold mb-6">Get Started in Seconds</h2>
+        <div class="max-w-md mx-auto bg-gray-100 p-6 rounded-2xl shadow">
+            <div id="step1">
+                <h3 class="font-semibold mb-4">Create Account</h3>
+                <input class="w-full mb-3 p-2 rounded border" placeholder="Your Name">
+                <input class="w-full mb-3 p-2 rounded border" placeholder="Your Skills (e.g., React, Python)">
+                <button onclick="startOnboarding()" class="bg-blue-600 text-white px-4 py-2 rounded w-full">Continue</button>
+            </div>
+            <div id="step2" class="hidden">
+                <h3 class="font-semibold mb-4">Setting up your profile...</h3>
+                <div class="w-full bg-gray-300 rounded-full h-3"><div id="progressBar" class="bg-blue-600 h-3 rounded-full w-0"></div></div>
+            </div>
+            <div id="step3" class="hidden">
+                <h3 class="font-semibold text-green-600">✅ You're Ready!</h3>
+                <button onclick="scrollToDashboard()" class="mt-4 bg-black text-white px-4 py-2 rounded">Go to Dashboard</button>
+            </div>
+        </div>
+    </section>
 
-            <!-- Top Bar -->
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="font-semibold text-lg">Dashboard</h3>
-
-                <div class="flex items-center gap-4">
-                    <button onclick="toggleRole()" class="text-xs bg-blue-600 px-3 py-1 rounded-full hover:bg-blue-700 transition">
-                        Switch View
-                    </button>
-                    <button onclick="toggleTheme()" class="text-xs bg-gray-700 px-3 py-1 rounded-full hover:bg-gray-600 transition">
-                        🌗 Theme
-                    </button>
-                    <div class="relative cursor-pointer" onclick="toggleNotifications()">
-                        <span>🔔</span>
-                        <span class="absolute -top-2 -right-2 bg-red-500 text-xs px-1 rounded-full">3</span>
+    <!-- DASHBOARD PREVIEW -->
+    <section class="py-20 bg-white" id="dashboard-section">
+        <h2 class="text-3xl font-bold text-center mb-12">Interactive Product Preview</h2>
+        <div class="max-w-6xl mx-auto px-4">
+            <div id="dashboard" class="bg-gray-900 rounded-2xl shadow-2xl p-6 text-white transition-all duration-500">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="font-semibold text-lg">Dashboard</h3>
+                    <div class="flex items-center gap-4">
+                        <button onclick="toggleRole()" class="text-xs bg-blue-600 px-3 py-1 rounded-full hover:bg-blue-700 transition">Switch View</button>
+                        <button onclick="toggleTheme()" class="text-xs bg-gray-700 px-3 py-1 rounded-full hover:bg-gray-600 transition">🌗 Theme</button>
+                        <div class="relative cursor-pointer" onclick="toggleNotifications()">
+                            <span>🔔</span>
+                            <span class="absolute -top-2 -right-2 bg-red-500 text-xs px-1 rounded-full">3</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="notifications" class="hidden mb-4 bg-gray-800 p-4 rounded-xl text-sm">
+                    <p class="mb-2">🔔 New internship match available</p>
+                    <p class="mb-2">✅ Your application was viewed</p>
+                    <p>📩 Message from a business</p>
+                </div>
+                <div class="grid md:grid-cols-4 gap-4">
+                    <div class="bg-gray-800 p-4 rounded-xl space-y-3">
+                        <p class="text-sm text-gray-400">Menu</p>
+                        <p class="font-medium cursor-pointer hover:text-blue-400 transition">Overview</p>
+                        <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Tasks</p>
+                        <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Messages</p>
+                        <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Profile</p>
+                    </div>
+                    <div class="md:col-span-3 space-y-4">
+                        <h4 id="roleTitle" class="font-semibold text-lg">Student Dashboard</h4>
+                        <div id="stats" class="grid md:grid-cols-3 gap-4">
+                            <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Applications Sent</p><h3 class="text-2xl font-bold">8</h3></div>
+                            <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Profile Completion</p><h3 class="text-2xl font-bold">85%</h3></div>
+                            <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Internships Matched</p><h3 class="text-2xl font-bold">3</h3></div>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-xl">
+                            <h4 class="font-semibold mb-3">Weekly Activity</h4>
+                            <div class="flex items-end gap-2 h-24">
+                                <div class="bg-blue-500 w-6 h-10 rounded"></div>
+                                <div class="bg-blue-500 w-6 h-16 rounded"></div>
+                                <div class="bg-blue-500 w-6 h-8 rounded"></div>
+                                <div class="bg-blue-500 w-6 h-20 rounded"></div>
+                                <div class="bg-blue-500 w-6 h-14 rounded"></div>
+                            </div>
+                        </div>
+                        <div id="tasks" class="bg-gray-800 p-4 rounded-xl">
+                            <h4 class="font-semibold mb-3">Active Tasks</h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between"><span>Landing Page Design</span><span class="text-green-400">In Progress</span></div>
+                                <div class="flex justify-between"><span>Instagram Management</span><span class="text-yellow-400">Pending</span></div>
+                                <div class="flex justify-between"><span>Data Entry Project</span><span class="text-blue-400">Completed</span></div>
+                            </div>
+                        </div>
+                        <div id="extra" class="bg-gray-800 p-4 rounded-xl">
+                            <h4 class="font-semibold mb-3">Verified Skills</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-blue-600 px-3 py-1 rounded-full">Frontend Dev</span>
+                                <span class="bg-green-600 px-3 py-1 rounded-full">Data Entry</span>
+                                <span class="bg-purple-600 px-3 py-1 rounded-full">Social Media</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- Notifications Panel -->
-            <div id="notifications" class="hidden mb-4 bg-gray-800 p-4 rounded-xl text-sm">
-                <p class="mb-2">🔔 New internship match available</p>
-                <p class="mb-2">✅ Your application was viewed</p>
-                <p>📩 Message from a business</p>
-            </div>
+    <script>
+        setTimeout(() => {
+            const aiBox = document.getElementById("aiBox");
+            const matchResult = document.getElementById("matchResult");
+            if (aiBox) aiBox.innerText = "✅ Matched";
+            if (matchResult) matchResult.classList.remove("hidden");
+        }, 2000);
 
-            <div class="grid md:grid-cols-4 gap-4">
+        function startOnboarding() {
+            document.getElementById("step1").classList.add("hidden");
+            document.getElementById("step2").classList.remove("hidden");
+            let width = 0;
+            const interval = setInterval(() => {
+                width += 20;
+                document.getElementById("progressBar").style.width = width + "%";
+                if (width >= 100) {
+                    clearInterval(interval);
+                    document.getElementById("step2").classList.add("hidden");
+                    document.getElementById("step3").classList.remove("hidden");
+                }
+            }, 300);
+        }
 
-                <!-- Sidebar -->
-                <div class="bg-gray-800 p-4 rounded-xl space-y-3">
-                    <p class="text-sm text-gray-400">Menu</p>
-                    <p class="font-medium cursor-pointer hover:text-blue-400 transition">Overview</p>
-                    <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Tasks</p>
-                    <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Messages</p>
-                    <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Profile</p>
+        function scrollToDashboard() {
+            document.getElementById("dashboard-section").scrollIntoView({ behavior: "smooth" });
+        }
+
+        let isDark = true;
+        let isBusiness = false;
+
+        function toggleTheme() {
+            const dash = document.getElementById("dashboard");
+            if (isDark) {
+                dash.classList.remove("bg-gray-900", "text-white");
+                dash.classList.add("bg-gray-100", "text-black");
+            } else {
+                dash.classList.add("bg-gray-900", "text-white");
+                dash.classList.remove("bg-gray-100", "text-black");
+            }
+            isDark = !isDark;
+        }
+
+        function resetToStudent() {
+            document.getElementById("roleTitle").innerText = "Student Dashboard";
+            document.getElementById("stats").innerHTML = `
+                <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Applications Sent</p><h3 class="text-2xl font-bold">8</h3></div>
+                <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Profile Completion</p><h3 class="text-2xl font-bold">85%</h3></div>
+                <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Internships Matched</p><h3 class="text-2xl font-bold">3</h3></div>
+            `;
+            document.getElementById("tasks").innerHTML = `
+                <h4 class="font-semibold mb-3">Active Tasks</h4>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between"><span>Landing Page Design</span><span class="text-green-400">In Progress</span></div>
+                    <div class="flex justify-between"><span>Instagram Management</span><span class="text-yellow-400">Pending</span></div>
+                    <div class="flex justify-between"><span>Data Entry Project</span><span class="text-blue-400">Completed</span></div>
                 </div>
-
-                <!-- Main -->
-                <div class="md:col-span-3 space-y-4">
-
-                    <h4 id="roleTitle" class="font-semibold text-lg">Student Dashboard</h4>
-
-                    <div id="stats" class="grid md:grid-cols-3 gap-4">
-                        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-                            <p class="text-gray-400 text-sm">Tasks Completed</p>
-                            <h3 class="text-2xl font-bold">12</h3>
-                        </div>
-                        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-                            <p class="text-gray-400 text-sm">Skill Score</p>
-                            <h3 class="text-2xl font-bold">85%</h3>
-                        </div>
-                        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-                            <p class="text-gray-400 text-sm">Earnings</p>
-                            <h3 class="text-2xl font-bold">$120</h3>
-                        </div>
-                    </div>
-
-                    <div class="bg-gray-800 p-4 rounded-xl">
-                        <h4 class="font-semibold mb-3">Weekly Activity</h4>
-                        <div class="flex items-end gap-2 h-24">
-                            <div class="bg-blue-500 w-6 h-10 rounded hover:bg-blue-400 transition"></div>
-                            <div class="bg-blue-500 w-6 h-16 rounded hover:bg-blue-400 transition"></div>
-                            <div class="bg-blue-500 w-6 h-8 rounded hover:bg-blue-400 transition"></div>
-                            <div class="bg-blue-500 w-6 h-20 rounded hover:bg-blue-400 transition"></div>
-                            <div class="bg-blue-500 w-6 h-14 rounded hover:bg-blue-400 transition"></div>
-                        </div>
-                    </div>
-
-                    <div id="tasks" class="bg-gray-800 p-4 rounded-xl">
-                        <h4 class="font-semibold mb-3">Active Tasks</h4>
-                        <div class="space-y-3 text-sm">
-                            <div class="flex justify-between">
-                                <span>Landing Page Design</span>
-                                <span class="text-green-400">In Progress</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Instagram Management</span>
-                                <span class="text-yellow-400">Pending</span>
-                            </div>
-                            <div class="flex justify-between">
-                                <span>Data Entry Project</span>
-                                <span class="text-blue-400">Completed</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="extra" class="bg-gray-800 p-4 rounded-xl">
-                        <h4 class="font-semibold mb-3">Verified Skills</h4>
-                        <div class="flex flex-wrap gap-2 text-xs">
-                            <span class="bg-blue-600 px-3 py-1 rounded-full">Frontend Dev</span>
-                            <span class="bg-green-600 px-3 py-1 rounded-full">Data Entry</span>
-                            <span class="bg-purple-600 px-3 py-1 rounded-full">Social Media</span>
-                        </div>
-                    </div>
-
+            `;
+            document.getElementById("extra").innerHTML = `
+                <h4 class="font-semibold mb-3">Verified Skills</h4>
+                <div class="flex flex-wrap gap-2 text-xs">
+                    <span class="bg-blue-600 px-3 py-1 rounded-full">Frontend Dev</span>
+                    <span class="bg-green-600 px-3 py-1 rounded-full">Data Entry</span>
+                    <span class="bg-purple-600 px-3 py-1 rounded-full">Social Media</span>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
+            `;
+        }
 
-<script>
-let isDark = true;
-let isBusiness = false;
+        function switchToBusiness() {
+            document.getElementById("roleTitle").innerText = "Business Dashboard";
+            document.getElementById("stats").innerHTML = `
+                <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Internships Posted</p><h3 class="text-2xl font-bold">8</h3></div>
+                <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Total Applications</p><h3 class="text-2xl font-bold">24</h3></div>
+                <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Hired Students</p><h3 class="text-2xl font-bold">5</h3></div>
+            `;
+            document.getElementById("tasks").innerHTML = `
+                <h4 class="font-semibold mb-3">Recent Applications</h4>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between"><span>Frontend Intern - 3 applicants</span><span class="text-yellow-400">Pending Review</span></div>
+                    <div class="flex justify-between"><span>Social Media Manager - 7 applicants</span><span class="text-green-400">Reviewing</span></div>
+                    <div class="flex justify-between"><span>Data Entry Assistant - 5 applicants</span><span class="text-blue-400">Shortlisted</span></div>
+                </div>
+            `;
+            document.getElementById("extra").innerHTML = `
+                <h4 class="font-semibold mb-3">Top Matched Students</h4>
+                <div class="space-y-2 text-sm">
+                    <p>🎓 Amara Okonkwo - Web Developer</p>
+                    <p>🎓 Chidi Eze - Graphic Designer</p>
+                    <p>🎓 Fatima Bello - Digital Marketer</p>
+                </div>
+            `;
+        }
 
-function toggleTheme() {
-    const dash = document.getElementById("dashboard");
+        function toggleRole() {
+            if (!isBusiness) switchToBusiness();
+            else resetToStudent();
+            isBusiness = !isBusiness;
+        }
 
-    if (isDark) {
-        dash.classList.remove("bg-gray-900", "text-white");
-        dash.classList.add("bg-gray-100", "text-black");
-    } else {
-        dash.classList.add("bg-gray-900", "text-white");
-        dash.classList.remove("bg-gray-100", "text-black");
-    }
-
-    isDark = !isDark;
-}
-
-function resetToStudent() {
-    const title = document.getElementById("roleTitle");
-    const stats = document.getElementById("stats");
-    const tasks = document.getElementById("tasks");
-    const extra = document.getElementById("extra");
-
-    title.innerText = "Student Dashboard";
-
-    stats.innerHTML = `
-        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-            <p class="text-gray-400 text-sm">Tasks Completed</p>
-            <h3 class="text-2xl font-bold">12</h3>
-        </div>
-        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-            <p class="text-gray-400 text-sm">Skill Score</p>
-            <h3 class="text-2xl font-bold">85%</h3>
-        </div>
-        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-            <p class="text-gray-400 text-sm">Earnings</p>
-            <h3 class="text-2xl font-bold">$120</h3>
-        </div>
-    `;
-
-    tasks.innerHTML = `
-        <h4 class="font-semibold mb-3">Active Tasks</h4>
-        <div class="space-y-3 text-sm">
-            <div class="flex justify-between">
-                <span>Landing Page Design</span>
-                <span class="text-green-400">In Progress</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Instagram Management</span>
-                <span class="text-yellow-400">Pending</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Data Entry Project</span>
-                <span class="text-blue-400">Completed</span>
-            </div>
-        </div>
-    `;
-
-    extra.innerHTML = `
-        <h4 class="font-semibold mb-3">Verified Skills</h4>
-        <div class="flex flex-wrap gap-2 text-xs">
-            <span class="bg-blue-600 px-3 py-1 rounded-full">Frontend Dev</span>
-            <span class="bg-green-600 px-3 py-1 rounded-full">Data Entry</span>
-            <span class="bg-purple-600 px-3 py-1 rounded-full">Social Media</span>
-        </div>
-    `;
-}
-
-function switchToBusiness() {
-    const title = document.getElementById("roleTitle");
-    const stats = document.getElementById("stats");
-    const tasks = document.getElementById("tasks");
-    const extra = document.getElementById("extra");
-
-    title.innerText = "Business Dashboard";
-
-    stats.innerHTML = `
-        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-            <p class="text-gray-400 text-sm">Internships Posted</p>
-            <h3 class="text-2xl font-bold">8</h3>
-        </div>
-        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-            <p class="text-gray-400 text-sm">Total Applications</p>
-            <h3 class="text-2xl font-bold">24</h3>
-        </div>
-        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
-            <p class="text-gray-400 text-sm">Hired Students</p>
-            <h3 class="text-2xl font-bold">5</h3>
-        </div>
-    `;
-
-    tasks.innerHTML = `
-        <h4 class="font-semibold mb-3">Recent Applications</h4>
-        <div class="space-y-3 text-sm">
-            <div class="flex justify-between">
-                <span>Frontend Intern - 3 applicants</span>
-                <span class="text-yellow-400">Pending Review</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Social Media Manager - 7 applicants</span>
-                <span class="text-green-400">Reviewing</span>
-            </div>
-            <div class="flex justify-between">
-                <span>Data Entry Assistant - 5 applicants</span>
-                <span class="text-blue-400">Shortlisted</span>
-            </div>
-        </div>
-    `;
-
-    extra.innerHTML = `
-        <h4 class="font-semibold mb-3">Top Matched Students</h4>
-        <div class="space-y-2 text-sm">
-            <p>🎓 Amara Okonkwo - Web Developer</p>
-            <p>🎓 Chidi Eze - Graphic Designer</p>
-            <p>🎓 Fatima Bello - Digital Marketer</p>
-        </div>
-    `;
-}
-
-function toggleRole() {
-    if (!isBusiness) {
-        switchToBusiness();
-    } else {
-        resetToStudent();
-    }
-    isBusiness = !isBusiness;
-}
-
-function toggleNotifications() {
-    const panel = document.getElementById("notifications");
-    panel.classList.toggle("hidden");
-}
-</script>
-
+        function toggleNotifications() {
+            document.getElementById("notifications").classList.toggle("hidden");
+        }
+    </script>
 </body>
 </html>
