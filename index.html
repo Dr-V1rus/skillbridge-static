@@ -16,14 +16,20 @@
 </head>
 <body class="bg-white">
 
-    <!-- AI MATCHING SECTION -->
+    <!-- ==================== AI MATCHING SECTION ==================== -->
     <section class="py-20 bg-gray-50 text-center">
         <h2 class="text-3xl font-bold mb-6">AI-Powered Skill Matching</h2>
         <p class="mb-10 text-gray-600">Watch how SkillBridge matches talent to opportunities instantly</p>
         <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-2xl p-6">
             <div class="grid md:grid-cols-3 gap-6 items-center">
+                <!-- Student -->
                 <div class="text-left">
-                    <h4 class="font-semibold mb-2">👨‍🎓 Student</h4>
+                    <div class="flex items-center gap-2 mb-2">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                        <h4 class="font-semibold">Student</h4>
+                    </div>
                     <p class="text-sm">Skills:</p>
                     <div class="flex flex-wrap gap-2 mt-2">
                         <span class="bg-blue-100 px-2 py-1 rounded text-xs">HTML</span>
@@ -31,20 +37,39 @@
                         <span class="bg-blue-100 px-2 py-1 rounded text-xs">UI Design</span>
                     </div>
                 </div>
+                <!-- AI -->
                 <div class="flex flex-col items-center">
-                    <div id="aiBox" class="bg-purple-600 text-white px-4 py-2 rounded-full animate-pulse">🤖 Matching...</div>
+                    <div id="aiBox" class="bg-purple-600 text-white px-4 py-2 rounded-full animate-pulse flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
+                        <span>Matching...</span>
+                    </div>
                 </div>
+                <!-- Internship -->
                 <div class="text-left">
-                    <h4 class="font-semibold mb-2">🏢 Internship</h4>
+                    <div class="flex items-center gap-2 mb-2">
+                        <svg class="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
+                        <h4 class="font-semibold">Internship</h4>
+                    </div>
                     <p class="text-sm">Frontend Developer</p>
                     <p class="text-xs text-gray-500">Needs UI + Frontend skills</p>
                 </div>
             </div>
-            <div id="matchResult" class="mt-6 hidden"><p class="text-green-600 font-semibold">✅ 92% Match Found — Perfect Fit!</p></div>
+            <div id="matchResult" class="mt-6 hidden">
+                <p class="text-green-600 font-semibold flex items-center justify-center gap-1">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    92% Match Found — Perfect Fit!
+                </p>
+            </div>
         </div>
     </section>
 
-    <!-- ONBOARDING FLOW -->
+    <!-- ==================== ONBOARDING FLOW ==================== -->
     <section class="py-20 bg-white text-center">
         <h2 class="text-3xl font-bold mb-6">Get Started in Seconds</h2>
         <div class="max-w-md mx-auto bg-gray-100 p-6 rounded-2xl shadow">
@@ -59,13 +84,18 @@
                 <div class="w-full bg-gray-300 rounded-full h-3"><div id="progressBar" class="bg-blue-600 h-3 rounded-full w-0"></div></div>
             </div>
             <div id="step3" class="hidden">
-                <h3 class="font-semibold text-green-600">✅ You're Ready!</h3>
+                <div class="flex items-center justify-center gap-2 text-green-600 font-semibold mb-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h3>You're Ready!</h3>
+                </div>
                 <button onclick="scrollToDashboard()" class="mt-4 bg-black text-white px-4 py-2 rounded">Go to Dashboard</button>
             </div>
         </div>
     </section>
 
-    <!-- DASHBOARD PREVIEW -->
+    <!-- ==================== DASHBOARD PREVIEW ==================== -->
     <section class="py-20 bg-white" id="dashboard-section">
         <h2 class="text-3xl font-bold text-center mb-12">Interactive Product Preview</h2>
         <div class="max-w-6xl mx-auto px-4">
@@ -74,17 +104,24 @@
                     <h3 class="font-semibold text-lg">Dashboard</h3>
                     <div class="flex items-center gap-4">
                         <button onclick="toggleRole()" class="text-xs bg-blue-600 px-3 py-1 rounded-full hover:bg-blue-700 transition">Switch View</button>
-                        <button onclick="toggleTheme()" class="text-xs bg-gray-700 px-3 py-1 rounded-full hover:bg-gray-600 transition">🌗 Theme</button>
+                        <button onclick="toggleTheme()" class="text-xs bg-gray-700 px-3 py-1 rounded-full hover:bg-gray-600 transition flex items-center gap-1">
+                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                            Theme
+                        </button>
                         <div class="relative cursor-pointer" onclick="toggleNotifications()">
-                            <span>🔔</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                            </svg>
                             <span class="absolute -top-2 -right-2 bg-red-500 text-xs px-1 rounded-full">3</span>
                         </div>
                     </div>
                 </div>
-                <div id="notifications" class="hidden mb-4 bg-gray-800 p-4 rounded-xl text-sm">
-                    <p class="mb-2">🔔 New internship match available</p>
-                    <p class="mb-2">✅ Your application was viewed</p>
-                    <p>📩 Message from a business</p>
+                <div id="notifications" class="hidden mb-4 bg-gray-800 p-4 rounded-xl text-sm space-y-1">
+                    <p class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg> New internship match available</p>
+                    <p class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Your application was viewed</p>
+                    <p class="flex items-center gap-2"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg> Message from a business</p>
                 </div>
                 <div class="grid md:grid-cols-4 gap-4">
                     <div class="bg-gray-800 p-4 rounded-xl space-y-3">
@@ -100,6 +137,16 @@
                             <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Applications Sent</p><h3 class="text-2xl font-bold">8</h3></div>
                             <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Profile Completion</p><h3 class="text-2xl font-bold">85%</h3></div>
                             <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition"><p class="text-gray-400 text-sm">Internships Matched</p><h3 class="text-2xl font-bold">3</h3></div>
+                        </div>
+                        <div class="bg-purple-100 text-gray-800 p-4 rounded-xl text-left">
+                            <div class="flex items-center gap-2 mb-2">
+                                <svg class="w-5 h-5 text-purple-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                </svg>
+                                <h4 class="font-semibold">AI Suggestions</h4>
+                            </div>
+                            <p class="text-sm">You are a strong match for 3 new tasks this week.</p>
+                            <p class="text-xs text-gray-600 mt-1">Tip: Improve your profile to increase matches.</p>
                         </div>
                         <div class="bg-gray-800 p-4 rounded-xl">
                             <h4 class="font-semibold mb-3">Weekly Activity</h4>
@@ -133,21 +180,56 @@
         </div>
     </section>
 
+    <!-- ==================== CHAT SIMULATION ==================== -->
+    <section class="py-20 bg-gray-50">
+        <h2 class="text-3xl font-bold text-center mb-10">Real-Time Collaboration</h2>
+        <div class="max-w-3xl mx-auto bg-white rounded-2xl shadow p-6">
+            <div class="space-y-4 text-sm" id="chatMessages">
+                <div class="flex justify-start"><div class="bg-gray-200 p-3 rounded-xl max-w-xs">Hi, can you complete the landing page by tomorrow?</div></div>
+                <div class="flex justify-end"><div class="bg-blue-600 text-white p-3 rounded-xl max-w-xs">Yes, I'll deliver it before deadline 👍</div></div>
+                <div class="flex justify-start"><div class="bg-gray-200 p-3 rounded-xl max-w-xs">Great, I like your previous work!</div></div>
+            </div>
+            <div class="mt-4 flex gap-2">
+                <input type="text" id="chatInput" class="flex-1 border rounded p-2 text-sm" placeholder="Type a message...">
+                <button onclick="sendMessage()" class="bg-blue-600 text-white px-4 rounded hover:bg-blue-700">Send</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== LIVE ACTIVITY FEED ==================== -->
+    <section class="py-16 bg-white text-center">
+        <h2 class="text-2xl font-bold mb-6">Live Platform Activity</h2>
+        <div class="max-w-xl mx-auto text-left space-y-3" id="activityFeed"></div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <p>&copy; 2026 SkillBridge Africa. All rights reserved. Built for Africa.</p>
+        </div>
+    </footer>
+
     <script>
+        // AI Matching simulation
         setTimeout(() => {
             const aiBox = document.getElementById("aiBox");
             const matchResult = document.getElementById("matchResult");
-            if (aiBox) aiBox.innerText = "✅ Matched";
+            if (aiBox) {
+                aiBox.innerHTML = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> Matched`;
+                aiBox.classList.remove("animate-pulse");
+            }
             if (matchResult) matchResult.classList.remove("hidden");
         }, 2000);
 
+        // Onboarding flow
         function startOnboarding() {
             document.getElementById("step1").classList.add("hidden");
             document.getElementById("step2").classList.remove("hidden");
             let width = 0;
             const interval = setInterval(() => {
                 width += 20;
-                document.getElementById("progressBar").style.width = width + "%";
+                const progressBar = document.getElementById("progressBar");
+                if (progressBar) progressBar.style.width = width + "%";
                 if (width >= 100) {
                     clearInterval(interval);
                     document.getElementById("step2").classList.add("hidden");
@@ -160,6 +242,7 @@
             document.getElementById("dashboard-section").scrollIntoView({ behavior: "smooth" });
         }
 
+        // Dashboard theme and role toggles
         let isDark = true;
         let isBusiness = false;
 
@@ -218,9 +301,9 @@
             document.getElementById("extra").innerHTML = `
                 <h4 class="font-semibold mb-3">Top Matched Students</h4>
                 <div class="space-y-2 text-sm">
-                    <p>🎓 Amara Okonkwo - Web Developer</p>
-                    <p>🎓 Chidi Eze - Graphic Designer</p>
-                    <p>🎓 Fatima Bello - Digital Marketer</p>
+                    <p><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg> Amara Okonkwo - Web Developer</p>
+                    <p><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" /></svg> Chidi Eze - Graphic Designer</p>
+                    <p><svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" /></svg> Fatima Bello - Digital Marketer</p>
                 </div>
             `;
         }
@@ -234,6 +317,62 @@
         function toggleNotifications() {
             document.getElementById("notifications").classList.toggle("hidden");
         }
+
+        // Chat simulation – add new messages
+        function sendMessage() {
+            const input = document.getElementById("chatInput");
+            const message = input.value.trim();
+            if (message === "") return;
+            const chatContainer = document.getElementById("chatMessages");
+            const newMessageDiv = document.createElement("div");
+            newMessageDiv.className = "flex justify-end";
+            newMessageDiv.innerHTML = `<div class="bg-blue-600 text-white p-3 rounded-xl max-w-xs">${escapeHtml(message)}</div>`;
+            chatContainer.appendChild(newMessageDiv);
+            input.value = "";
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        // Live activity feed
+        const activities = [
+            "John matched with a design task",
+            "A business posted a new task",
+            "Sarah completed a project",
+            "New student joined SkillBridge",
+            "3 matches made in the last minute"
+        ];
+        const activityIcons = [
+            '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>',
+            '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>',
+            '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>',
+            '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>',
+            '<svg class="w-4 h-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>'
+        ];
+
+        function addActivity() {
+            const feed = document.getElementById("activityFeed");
+            if (!feed) return;
+            const randomIndex = Math.floor(Math.random() * activities.length);
+            const item = document.createElement("div");
+            item.className = "bg-gray-100 p-3 rounded text-sm flex items-center gap-2";
+            item.innerHTML = `${activityIcons[randomIndex]} ${activities[randomIndex]}`;
+            feed.prepend(item);
+            if (feed.children.length > 5) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+
+        setInterval(addActivity, 2000);
+        addActivity();
+        addActivity();
     </script>
 </body>
 </html>
