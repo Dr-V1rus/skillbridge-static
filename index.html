@@ -1,0 +1,261 @@
+<!-- ADVANCED DASHBOARD PREVIEW -->
+<section class="py-20 bg-white">
+    <h2 class="text-3xl font-bold text-center mb-12">
+        Interactive Product Preview
+    </h2>
+
+    <div class="max-w-6xl mx-auto px-4">
+        <div id="dashboard" class="bg-gray-900 rounded-2xl shadow-2xl p-6 text-white transition-all duration-500">
+
+            <!-- Top Bar -->
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="font-semibold text-lg">Dashboard</h3>
+
+                <div class="flex items-center gap-4">
+                    <!-- Toggle Role -->
+                    <button onclick="toggleRole()"
+                        class="text-xs bg-blue-600 px-3 py-1 rounded-full hover:bg-blue-700 transition">
+                        Switch View
+                    </button>
+
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()"
+                        class="text-xs bg-gray-700 px-3 py-1 rounded-full hover:bg-gray-600 transition">
+                        🌗 Theme
+                    </button>
+
+                    <!-- Notification -->
+                    <div class="relative cursor-pointer" onclick="toggleNotifications()">
+                        <span>🔔</span>
+                        <span class="absolute -top-2 -right-2 bg-red-500 text-xs px-1 rounded-full">3</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications Panel -->
+            <div id="notifications" class="hidden mb-4 bg-gray-800 p-4 rounded-xl text-sm">
+                <p class="mb-2">🔔 New internship match available</p>
+                <p class="mb-2">✅ Your application was viewed</p>
+                <p>📩 Message from a business</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-4">
+
+                <!-- Sidebar -->
+                <div class="bg-gray-800 p-4 rounded-xl space-y-3">
+                    <p class="text-sm text-gray-400">Menu</p>
+                    <p class="font-medium cursor-pointer hover:text-blue-400 transition">Overview</p>
+                    <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Tasks</p>
+                    <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Messages</p>
+                    <p class="text-gray-400 cursor-pointer hover:text-blue-400 transition">Profile</p>
+                </div>
+
+                <!-- Main -->
+                <div class="md:col-span-3 space-y-4">
+
+                    <!-- Dynamic Title -->
+                    <h4 id="roleTitle" class="font-semibold text-lg">Student Dashboard</h4>
+
+                    <!-- Stats -->
+                    <div id="stats" class="grid md:grid-cols-3 gap-4">
+                        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+                            <p class="text-gray-400 text-sm">Tasks Completed</p>
+                            <h3 class="text-2xl font-bold">12</h3>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+                            <p class="text-gray-400 text-sm">Skill Score</p>
+                            <h3 class="text-2xl font-bold">85%</h3>
+                        </div>
+                        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+                            <p class="text-gray-400 text-sm">Earnings</p>
+                            <h3 class="text-2xl font-bold">$120</h3>
+                        </div>
+                    </div>
+
+                    <!-- Chart -->
+                    <div class="bg-gray-800 p-4 rounded-xl">
+                        <h4 class="font-semibold mb-3">Weekly Activity</h4>
+                        <div class="flex items-end gap-2 h-24">
+                            <div class="bg-blue-500 w-6 h-10 rounded hover:bg-blue-400 transition"></div>
+                            <div class="bg-blue-500 w-6 h-16 rounded hover:bg-blue-400 transition"></div>
+                            <div class="bg-blue-500 w-6 h-8 rounded hover:bg-blue-400 transition"></div>
+                            <div class="bg-blue-500 w-6 h-20 rounded hover:bg-blue-400 transition"></div>
+                            <div class="bg-blue-500 w-6 h-14 rounded hover:bg-blue-400 transition"></div>
+                        </div>
+                    </div>
+
+                    <!-- Tasks -->
+                    <div id="tasks" class="bg-gray-800 p-4 rounded-xl">
+                        <h4 class="font-semibold mb-3">Active Tasks</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between">
+                                <span>Landing Page Design</span>
+                                <span class="text-green-400">In Progress</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Instagram Management</span>
+                                <span class="text-yellow-400">Pending</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Data Entry Project</span>
+                                <span class="text-blue-400">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Skills / Business Section -->
+                    <div id="extra" class="bg-gray-800 p-4 rounded-xl">
+                        <h4 class="font-semibold mb-3">Verified Skills</h4>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-blue-600 px-3 py-1 rounded-full">Frontend Dev</span>
+                            <span class="bg-green-600 px-3 py-1 rounded-full">Data Entry</span>
+                            <span class="bg-purple-600 px-3 py-1 rounded-full">Social Media</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    let isDark = true;
+    let isBusiness = false;
+
+    function toggleTheme() {
+        const dash = document.getElementById("dashboard");
+
+        if (isDark) {
+            dash.classList.remove("bg-gray-900", "text-white");
+            dash.classList.add("bg-gray-100", "text-black");
+        } else {
+            dash.classList.add("bg-gray-900", "text-white");
+            dash.classList.remove("bg-gray-100", "text-black");
+        }
+
+        isDark = !isDark;
+    }
+
+    function resetToStudent() {
+        const title = document.getElementById("roleTitle");
+        const stats = document.getElementById("stats");
+        const tasks = document.getElementById("tasks");
+        const extra = document.getElementById("extra");
+
+        title.innerText = "Student Dashboard";
+
+        stats.innerHTML = `
+        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+            <p class="text-gray-400 text-sm">Tasks Completed</p>
+            <h3 class="text-2xl font-bold">12</h3>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+            <p class="text-gray-400 text-sm">Skill Score</p>
+            <h3 class="text-2xl font-bold">85%</h3>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+            <p class="text-gray-400 text-sm">Earnings</p>
+            <h3 class="text-2xl font-bold">$120</h3>
+        </div>
+    `;
+
+        tasks.innerHTML = `
+        <h4 class="font-semibold mb-3">Active Tasks</h4>
+        <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+                <span>Landing Page Design</span>
+                <span class="text-green-400">In Progress</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Instagram Management</span>
+                <span class="text-yellow-400">Pending</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Data Entry Project</span>
+                <span class="text-blue-400">Completed</span>
+            </div>
+        </div>
+    `;
+
+        extra.innerHTML = `
+        <h4 class="font-semibold mb-3">Verified Skills</h4>
+        <div class="flex flex-wrap gap-2 text-xs">
+            <span class="bg-blue-600 px-3 py-1 rounded-full">Frontend Dev</span>
+            <span class="bg-green-600 px-3 py-1 rounded-full">Data Entry</span>
+            <span class="bg-purple-600 px-3 py-1 rounded-full">Social Media</span>
+        </div>
+    `;
+    }
+
+    function switchToBusiness() {
+        const title = document.getElementById("roleTitle");
+        const stats = document.getElementById("stats");
+        const tasks = document.getElementById("tasks");
+        const extra = document.getElementById("extra");
+
+        title.innerText = "Business Dashboard";
+
+        stats.innerHTML = `
+        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+            <p class="text-gray-400 text-sm">Internships Posted</p>
+            <h3 class="text-2xl font-bold">8</h3>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+            <p class="text-gray-400 text-sm">Total Applications</p>
+            <h3 class="text-2xl font-bold">24</h3>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-xl hover:scale-105 transition">
+            <p class="text-gray-400 text-sm">Hired Students</p>
+            <h3 class="text-2xl font-bold">5</h3>
+        </div>
+    `;
+
+        tasks.innerHTML = `
+        <h4 class="font-semibold mb-3">Recent Applications</h4>
+        <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+                <span>Frontend Intern - 3 applicants</span>
+                <span class="text-yellow-400">Pending Review</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Social Media Manager - 7 applicants</span>
+                <span class="text-green-400">Reviewing</span>
+            </div>
+            <div class="flex justify-between">
+                <span>Data Entry Assistant - 5 applicants</span>
+                <span class="text-blue-400">Shortlisted</span>
+            </div>
+        </div>
+    `;
+
+        extra.innerHTML = `
+        <h4 class="font-semibold mb-3">Top Matched Students</h4>
+        <div class="space-y-2 text-sm">
+            <p>🎓 Amara Okonkwo - Web Developer</p>
+            <p>🎓 Chidi Eze - Graphic Designer</p>
+            <p>🎓 Fatima Bello - Digital Marketer</p>
+        </div>
+    `;
+    }
+
+    function toggleRole() {
+        if (!isBusiness) {
+            switchToBusiness();
+        } else {
+            resetToStudent();
+        }
+        isBusiness = !isBusiness;
+    }
+
+    function toggleNotifications() {
+        const panel = document.getElementById("notifications");
+        panel.classList.toggle("hidden");
+    }
+</script>
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
